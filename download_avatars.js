@@ -34,31 +34,16 @@ function getRepoContributors(repoOwner, repoName, cb) {
 }
 
 
-//getRepoContributors("jquery", "jquery", downloadImageByURL);
-//getRepoContributors(repoOwner, repoName, downloadImageByURL);
-
-
-
-//var url = "https://avatars2.githubusercontent.com/u/2741?v=3&s=466"
-//var filePath = "avatars/kvirani.jpg"
-
-
-
-
 function downloadImageByURL(url, filePath) {
 
-  request.get(url)               // Note 1
-  .on('error', function (err) {                                   // Note 2
+  request.get(url)               
+  .on('error', function (err) {                                   
     throw err; 
   })
-  .on('response', function (response) {                           // Note 3
+  .on('response', function (response) {                           
     console.log('Response Status Code: ', response.statusCode);
     console.log('Response Status Message: ', response.statusMessage);
     console.log('Response Headers: ', response.headers['content-type'])
   })
-  .pipe(fs.createWriteStream(filePath));               // Note 4
-
-
+  .pipe(fs.createWriteStream(filePath));               
 }
-
-//downloadImageByURL(url, filePath); 
