@@ -2,10 +2,16 @@ var request = require('request');
 var secrets = require('./secrets.js');
 var fs = require('fs');
 
+console.log('Welcome to the GitHub Avatar Downloader!');
+
 var repoOwner = process.argv[2];
 var repoName = process.argv[3];
 
-console.log('Welcome to the GitHub Avatar Downloader!');
+if (!process.argv[2] || !process.argv[3]) {
+  console.log("Error: At least one input argument is missing");
+} else {
+  getRepoContributors(repoOwner, repoName, downloadImageByURL);
+}
 
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
@@ -29,7 +35,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 
 //getRepoContributors("jquery", "jquery", downloadImageByURL);
-getRepoContributors(repoOwner, repoName, downloadImageByURL);
+//getRepoContributors(repoOwner, repoName, downloadImageByURL);
 
 
 
